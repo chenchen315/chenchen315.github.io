@@ -8,18 +8,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://chenchen315.github.io">
-  <title>Category: 基础 | 单琛宇的博客</title>
+  <title>LruCache原理 | 单琛宇的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="业精于勤荒于嬉，行成于思毁于随">
-<meta property="og:type" content="website">
-<meta property="og:title" content="单琛宇的博客">
-<meta property="og:url" content="http://chenchen315.github.io/categories/Android/基础/index.html">
+  <meta name="description" content="一、LRU算法介绍LRU是最近最少使用的算法，它的核心思想是当缓存满时，会优先淘汰那些最近最少使用的缓存对象。采用LRU算法的缓存有两种：LruCache和DisLruCache，分别用于实现内存缓存和硬盘缓存，其核心思想都是LRU缓存算法。 在复习算法和数据结构的时候，我通过双向链表实现了一个LRU缓存淘汰算法，有兴趣的请点击 二、LruCache的介绍LruCache是Android 3.1所">
+<meta name="keywords" content="LRU">
+<meta property="og:type" content="article">
+<meta property="og:title" content="LruCache原理">
+<meta property="og:url" content="http://chenchen315.github.io/2019/01/02/2019-01-02-Android-LruCache/index.html">
 <meta property="og:site_name" content="单琛宇的博客">
-<meta property="og:description" content="业精于勤荒于嬉，行成于思毁于随">
+<meta property="og:description" content="一、LRU算法介绍LRU是最近最少使用的算法，它的核心思想是当缓存满时，会优先淘汰那些最近最少使用的缓存对象。采用LRU算法的缓存有两种：LruCache和DisLruCache，分别用于实现内存缓存和硬盘缓存，其核心思想都是LRU缓存算法。 在复习算法和数据结构的时候，我通过双向链表实现了一个LRU缓存淘汰算法，有兴趣的请点击 二、LruCache的介绍LruCache是Android 3.1所">
 <meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-09-01T08:24:27.013Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="单琛宇的博客">
-<meta name="twitter:description" content="业精于勤荒于嬉，行成于思毁于随">
+<meta name="twitter:title" content="LruCache原理">
+<meta name="twitter:description" content="一、LRU算法介绍LRU是最近最少使用的算法，它的核心思想是当缓存满时，会优先淘汰那些最近最少使用的缓存对象。采用LRU算法的缓存有两种：LruCache和DisLruCache，分别用于实现内存缓存和硬盘缓存，其核心思想都是LRU缓存算法。 在复习算法和数据结构的时候，我通过双向链表实现了一个LRU缓存淘汰算法，有兴趣的请点击 二、LruCache的介绍LruCache是Android 3.1所">
   
     <link rel="alternative" href="/atom.xml" title="单琛宇的博客" type="application/atom+xml">
   
@@ -157,36 +159,94 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
+            <article id="post-2019-01-02-Android-LruCache" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
   
+    <h1 class="article-title" itemprop="name">
+      LruCache原理
+    </h1>
   
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2019" class="archive-year">2019</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/01/02/2019-01-02-Android-LruCache/" class="archive-article-date">
+
+        
+        <a href="/2019/01/02/2019-01-02-Android-LruCache/" class="archive-article-date">
   	<time datetime="2019-01-02T07:11:15.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-01-02</time>
 </a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/01/02/2019-01-02-Android-LruCache/">LruCache原理</a>
-    </h1>
-  
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="一、LRU算法介绍"><a href="#一、LRU算法介绍" class="headerlink" title="一、LRU算法介绍"></a>一、LRU算法介绍</h2><p>LRU是最近最少使用的算法，它的核心思想是当缓存满时，会优先淘汰那些最近最少使用的缓存对象。采用LRU算法的缓存有两种：LruCache和DisLruCache，分别用于实现内存缓存和硬盘缓存，其核心思想都是LRU缓存算法。</p>
+<p>在复习算法和数据结构的时候，我通过双向链表实现了一个LRU缓存淘汰算法，<a href="https://github.com/Jesse505/algo/blob/master/day04/LRUCache.java" target="_blank" rel="noopener">有兴趣的请点击</a></p>
+<h2 id="二、LruCache的介绍"><a href="#二、LruCache的介绍" class="headerlink" title="二、LruCache的介绍"></a>二、LruCache的介绍</h2><p>LruCache是Android 3.1所提供的一个缓存类，所以在Android中可以直接使用LruCache实现内存缓存。而DisLruCache目前在Android 还不是Android SDK的一部分，但Android官方文档推荐使用该算法来实现硬盘缓存。</p>
+<p>LruCache是个泛型类，主要算法原理是把最近使用的对象用强引用（即我们平常使用的对象引用方式）存储在 LinkedHashMap 中。当缓存满时，把最近最少使用的对象从内存中移除，并提供了get和put方法来完成缓存的获取和添加操作。</p>
+<h2 id="三、LruCache的实现原理"><a href="#三、LruCache的实现原理" class="headerlink" title="三、LruCache的实现原理"></a>三、LruCache的实现原理</h2><p>LruCache的核心思想很好理解，就是要维护一个缓存对象列表，其中对象列表的排列方式是按照访问顺序实现的，即一直没访问的对象，将放在队尾，即将被淘汰。而最近访问的对象将放在队头，最后被淘汰。</p>
+<p>那么这个列表到底是由谁来维护的，前面已经介绍了是由LinkedHashMap来维护。为什么呢？</p>
+<a id="more"></a>
 
-        <div class="article-info info-on-right">
-          
+<p>因为LinkedHashMap是由数组+双向链表的数据结构来实现的。其中双向链表的结构可以实现访问顺序和插入顺序，使得LinkedHashMap中的&lt;key, value&gt;对按照一定顺序排列起来。</p>
+<p>通过下面构造函数来指定LinkedHashMap中双向链表的结构是访问顺序还是插入顺序。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="title">LinkedHashMap</span><span class="params">(<span class="keyword">int</span> initialCapacity,</span></span></span><br><span class="line"><span class="function"><span class="params">	<span class="keyword">float</span> loadFactor,</span></span></span><br><span class="line"><span class="function"><span class="params">	<span class="keyword">boolean</span> accessOrder)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">super</span>(initialCapacity, loadFactor);</span><br><span class="line">	<span class="keyword">this</span>.accessOrder = accessOrder;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>其中accessOrder设置为true则为访问顺序，为false，则为插入顺序。</p>
+<p>下面我们在LruCache源码中具体看看，怎么应用LinkedHashMap来实现缓存的添加，获得和删除的。首先来看构造方法：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="title">LruCache</span><span class="params">(<span class="keyword">int</span> maxSize)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">if</span> (maxSize &lt;= <span class="number">0</span>) &#123;</span><br><span class="line">		<span class="keyword">throw</span> <span class="keyword">new</span> IllegalArgumentException(<span class="string">"maxSize &lt;= 0"</span>);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">this</span>.maxSize = maxSize;</span><br><span class="line">	<span class="keyword">this</span>.map = <span class="keyword">new</span> LinkedHashMap&lt;K, V&gt;(<span class="number">0</span>, <span class="number">0.75f</span>, <span class="keyword">true</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>构造方法很简单，就是设置了缓存的最大值，新建了一个LinkedHashMap对象，并且设置为访问顺序。</p>
+<h3 id="put-方法"><a href="#put-方法" class="headerlink" title="put()方法"></a>put()方法</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">final</span> V <span class="title">put</span><span class="params">(K key, V value)</span> </span>&#123;</span><br><span class="line">         <span class="comment">//不可为空，否则抛出异常</span></span><br><span class="line">	<span class="keyword">if</span> (key == <span class="keyword">null</span> || value == <span class="keyword">null</span>) &#123;</span><br><span class="line">		<span class="keyword">throw</span> <span class="keyword">new</span> NullPointerException(<span class="string">"key == null || value == null"</span>);</span><br><span class="line">	&#125;</span><br><span class="line">	V previous;</span><br><span class="line">	<span class="keyword">synchronized</span> (<span class="keyword">this</span>) &#123;</span><br><span class="line">            <span class="comment">//插入的缓存对象值加1</span></span><br><span class="line">		putCount++;</span><br><span class="line">            <span class="comment">//增加已有缓存的大小</span></span><br><span class="line">		size += safeSizeOf(key, value);</span><br><span class="line">           <span class="comment">//向map中加入缓存对象</span></span><br><span class="line">		previous = map.put(key, value);</span><br><span class="line">            <span class="comment">//如果已有缓存对象，则缓存大小恢复到之前</span></span><br><span class="line">		<span class="keyword">if</span> (previous != <span class="keyword">null</span>) &#123;</span><br><span class="line">			size -= safeSizeOf(key, previous);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;    </span><br><span class="line">	<span class="keyword">if</span> (previous != <span class="keyword">null</span>) &#123;</span><br><span class="line">	   <span class="comment">//是个空方法，可以自行实现</span></span><br><span class="line">		entryRemoved(<span class="keyword">false</span>, key, previous, value);</span><br><span class="line">	&#125;</span><br><span class="line">        <span class="comment">//调整缓存大小</span></span><br><span class="line">	trimToSize(maxSize);</span><br><span class="line">	<span class="keyword">return</span> previous;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>可以看到put方法就是调用map的put方法，记录当前缓存大小，关键的方法在于trimToSize()方法，我们接着看。</p>
+<h3 id="trimToSize-方法"><a href="#trimToSize-方法" class="headerlink" title="trimToSize()方法"></a>trimToSize()方法</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">trimToSize</span><span class="params">(<span class="keyword">int</span> maxSize)</span> </span>&#123;</span><br><span class="line">    <span class="comment">//死循环</span></span><br><span class="line">	<span class="keyword">while</span> (<span class="keyword">true</span>) &#123;</span><br><span class="line">		K key;</span><br><span class="line">		V value;</span><br><span class="line">		<span class="keyword">synchronized</span> (<span class="keyword">this</span>) &#123;</span><br><span class="line">            <span class="comment">//如果map为空并且缓存size不等于0或者缓存size小于0，抛出异常</span></span><br><span class="line">			<span class="keyword">if</span> (size &lt; <span class="number">0</span> || (map.isEmpty() &amp;&amp; size != <span class="number">0</span>)) &#123;</span><br><span class="line">				<span class="keyword">throw</span> <span class="keyword">new</span> IllegalStateException(getClass().getName()</span><br><span class="line">					+ <span class="string">".sizeOf() is reporting inconsistent results!"</span>);</span><br><span class="line">			&#125;</span><br><span class="line">            <span class="comment">//如果缓存大小size小于最大缓存，或者map为空，不需要再删除缓存对象，跳出循环</span></span><br><span class="line">			<span class="keyword">if</span> (size &lt;= maxSize || map.isEmpty()) &#123;</span><br><span class="line">				<span class="keyword">break</span>;</span><br><span class="line">			&#125;</span><br><span class="line">            <span class="comment">//迭代器获取第一个对象，即队尾的元素，近期最少访问的元素</span></span><br><span class="line">			Map.Entry&lt;K, V&gt; toEvict = map.entrySet().iterator().next();</span><br><span class="line">			key = toEvict.getKey();</span><br><span class="line">			value = toEvict.getValue();</span><br><span class="line">            <span class="comment">//删除该对象，并更新缓存大小</span></span><br><span class="line">			map.remove(key);</span><br><span class="line">			size -= safeSizeOf(key, value);</span><br><span class="line">			evictionCount++;</span><br><span class="line">		&#125;</span><br><span class="line">		entryRemoved(<span class="keyword">true</span>, key, value, <span class="keyword">null</span>);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>可以看到trimToSize方法是在一个循环里去删除队尾的元素，也就是最少使用的元素，直到当前缓存大小小于等于最大缓存大小，才跳出循环。</p>
+<h3 id="get-方法"><a href="#get-方法" class="headerlink" title="get()方法"></a>get()方法</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">final</span> V <span class="title">get</span><span class="params">(K key)</span> </span>&#123;</span><br><span class="line">        <span class="comment">//key为空抛出异常</span></span><br><span class="line">	<span class="keyword">if</span> (key == <span class="keyword">null</span>) &#123;</span><br><span class="line">		<span class="keyword">throw</span> <span class="keyword">new</span> NullPointerException(<span class="string">"key == null"</span>);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	V mapValue;</span><br><span class="line">	<span class="keyword">synchronized</span> (<span class="keyword">this</span>) &#123;</span><br><span class="line">            <span class="comment">//获取对应的缓存对象</span></span><br><span class="line">            <span class="comment">//get()方法会实现将访问的元素更新到队列头部的功能</span></span><br><span class="line">		mapValue = map.get(key);</span><br><span class="line">		<span class="keyword">if</span> (mapValue != <span class="keyword">null</span>) &#123;</span><br><span class="line">			hitCount++;</span><br><span class="line">			<span class="keyword">return</span> mapValue;</span><br><span class="line">		&#125;</span><br><span class="line">		missCount++;</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure>
+
+<p>get()方法也很简单，这里就不多说了，其实LruCache的中get()方法和put()方法只是简单的调用了LinkedHashMap里的方法，真正的实现是LinkedHashMap中下面这段代码，这段代码在put和get方法中都有被调用过： </p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">recordAccess</span><span class="params">(HashMap&lt;K,V&gt; m)</span> </span>&#123;</span><br><span class="line">	LinkedHashMap&lt;K,V&gt; lm = (LinkedHashMap&lt;K,V&gt;)m;</span><br><span class="line">    <span class="comment">//判断是否是访问排序</span></span><br><span class="line">	<span class="keyword">if</span> (lm.accessOrder) &#123;</span><br><span class="line">		lm.modCount++;</span><br><span class="line">        <span class="comment">//删除此元素</span></span><br><span class="line">		remove();</span><br><span class="line">        <span class="comment">//将此元素移动到队列的头部</span></span><br><span class="line">		addBefore(lm.header);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="四、总结"><a href="#四、总结" class="headerlink" title="四、总结"></a>四、总结</h2><p><strong>由此可见LruCache中维护了一个集合LinkedHashMap，该LinkedHashMap是以访问顺序排序的。当调用put()方法时，就会在结合中添加元素，并调用trimToSize()判断缓存是否已满，如果满了就用LinkedHashMap的迭代器删除队尾元素，即近期最少访问的元素。当调用get()方法访问缓存对象时，就会调用LinkedHashMap的get()方法获得对应集合元素，同时会更新该元素到队头。</strong></p>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我喝咖啡<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/img/alipay.jpg">
+                      <span class="reward-type">支付宝</span>
+                    </div>
+                    
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/img/wechatPay.jpg">
+                      <span class="reward-type">微信</span>
+                    </div>
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
@@ -198,7 +258,7 @@
 		</ul>
 	</div>
 
-          
+      
 	<div class="article-category tagcloud">
 		<i class="icon-book icon"></i>
 		<ul class="article-tag-list">
@@ -215,70 +275,117 @@
 	</div>
 
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://chenchen315.github.io/2019/01/02/2019-01-02-Android-LruCache/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/01/01/2019-01-01-Android-LruCache/" class="archive-article-date">
-  	<time datetime="2019-01-01T07:11:15.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-01-01</time>
-</a>
+<nav id="article-nav">
+  
+  
+    <a href="/2019/01/01/2019-01-01-Android-LruCache/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">LruCache原理</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/01/01/2019-01-01-Android-LruCache/">LruCache原理</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">LRU</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/Android//" class="article-tag-list-link color3">Android</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/Android/基础//" class="article-tag-list-link color3">基础</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
+        
+        
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#一、LRU算法介绍"><span class="toc-number">1.</span> <span class="toc-text">一、LRU算法介绍</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#二、LruCache的介绍"><span class="toc-number">2.</span> <span class="toc-text">二、LruCache的介绍</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#三、LruCache的实现原理"><span class="toc-number">3.</span> <span class="toc-text">三、LruCache的实现原理</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#put-方法"><span class="toc-number">3.1.</span> <span class="toc-text">put()方法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#trimToSize-方法"><span class="toc-number">3.2.</span> <span class="toc-text">trimToSize()方法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#get-方法"><span class="toc-number">3.3.</span> <span class="toc-text">get()方法</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#四、总结"><span class="toc-number">4.</span> <span class="toc-text">四、总结</span></a></li></ol>
+                    </div>
+                </span>
+            </div>
         </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
+        
+    </div>
+</aside>
+
+
+
   
   
-    </div></section>
   
 
-    
+  
+
+  
+
+  
 
 
           </div>
@@ -301,10 +408,10 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
+		isPost: true,
 		isArchive: false,
 		isTag: false,
-		isCategory: true,
+		isCategory: false,
 		open_in_new: false,
 		toc_hide_index: true,
 		root: "/",
