@@ -8,27 +8,25 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://chenchen315.github.io">
-  <title>电商搜索逻辑与规则 | 单琛宇的博客</title>
+  <title>秒杀系统搭建 | 单琛宇的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="搜索是承载电商平台的最关键环节，也是流量产生成交的最重要的方式，所以说一个好的搜索功能是引导用户正确走向的功能，从而解决用户内心购买的需求同时也给我们带来商业利益。 拿App举例，从如下这几个方面展开讨论。部分内容也是结合部分大佬总结的，分享出来和大家共同探讨，希望对大家有帮助 类目检索、搜索框、搜索结果、筛选项、个性化推荐">
+  <meta name="description" content="秒杀是电商平台最常用的促销活动，例如京东淘宝等主流电商平台把秒杀、抢购作为一个功能入口存在，定期秒杀。其产品定位在于通过低价促销吸引对价格敏感的用户，起到引流促活，且带动销售。如下是京东、淘宝的秒杀页面。  那么一个秒杀系统如何搭建？前后端功能如何配合，都说“前端一小步，后端一大步”，对于C端来说，价格、商品吸引人，我能到特定时间去抢购、付款就可以了，那么后端如何做相应的功能支撑呢，下面我具体的阐">
 <meta property="og:type" content="article">
-<meta property="og:title" content="电商搜索逻辑与规则">
-<meta property="og:url" content="http://chenchen315.github.io/2018/10/24/电商搜索/index.html">
+<meta property="og:title" content="秒杀系统搭建">
+<meta property="og:url" content="http://chenchen315.github.io/2018/12/01/秒杀系统搭建/index.html">
 <meta property="og:site_name" content="单琛宇的博客">
-<meta property="og:description" content="搜索是承载电商平台的最关键环节，也是流量产生成交的最重要的方式，所以说一个好的搜索功能是引导用户正确走向的功能，从而解决用户内心购买的需求同时也给我们带来商业利益。 拿App举例，从如下这几个方面展开讨论。部分内容也是结合部分大佬总结的，分享出来和大家共同探讨，希望对大家有帮助 类目检索、搜索框、搜索结果、筛选项、个性化推荐">
+<meta property="og:description" content="秒杀是电商平台最常用的促销活动，例如京东淘宝等主流电商平台把秒杀、抢购作为一个功能入口存在，定期秒杀。其产品定位在于通过低价促销吸引对价格敏感的用户，起到引流促活，且带动销售。如下是京东、淘宝的秒杀页面。  那么一个秒杀系统如何搭建？前后端功能如何配合，都说“前端一小步，后端一大步”，对于C端来说，价格、商品吸引人，我能到特定时间去抢购、付款就可以了，那么后端如何做相应的功能支撑呢，下面我具体的阐">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/19142155-aef0009e47e78067.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/19142155-00bdecce4aab8533.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/19142155-5c1e9af0c2fe4bae.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/19142155-ae7fbed1dbfcdd18.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/19142155-91456ae5cb780222.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/19142155-a236425fd1c5298b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/19142155-7c8a12a428b82213.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:updated_time" content="2019-12-01T14:38:19.936Z">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/19142155-d91bf715d9894e89.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/19142155-134bbf67109fcbb9.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/19142155-45428df059beca44.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/19142155-98752cb0663c7000.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/19142155-7c7dc249caba8c29.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:updated_time" content="2019-12-01T14:47:06.699Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="电商搜索逻辑与规则">
-<meta name="twitter:description" content="搜索是承载电商平台的最关键环节，也是流量产生成交的最重要的方式，所以说一个好的搜索功能是引导用户正确走向的功能，从而解决用户内心购买的需求同时也给我们带来商业利益。 拿App举例，从如下这几个方面展开讨论。部分内容也是结合部分大佬总结的，分享出来和大家共同探讨，希望对大家有帮助 类目检索、搜索框、搜索结果、筛选项、个性化推荐">
-<meta name="twitter:image" content="https://upload-images.jianshu.io/upload_images/19142155-aef0009e47e78067.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta name="twitter:title" content="秒杀系统搭建">
+<meta name="twitter:description" content="秒杀是电商平台最常用的促销活动，例如京东淘宝等主流电商平台把秒杀、抢购作为一个功能入口存在，定期秒杀。其产品定位在于通过低价促销吸引对价格敏感的用户，起到引流促活，且带动销售。如下是京东、淘宝的秒杀页面。  那么一个秒杀系统如何搭建？前后端功能如何配合，都说“前端一小步，后端一大步”，对于C端来说，价格、商品吸引人，我能到特定时间去抢购、付款就可以了，那么后端如何做相应的功能支撑呢，下面我具体的阐">
+<meta name="twitter:image" content="https://upload-images.jianshu.io/upload_images/19142155-d91bf715d9894e89.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
   
     <link rel="alternative" href="/atom.xml" title="单琛宇的博客" type="application/atom+xml">
   
@@ -166,78 +164,63 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-电商搜索" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-秒杀系统搭建" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      电商搜索逻辑与规则
+      秒杀系统搭建
     </h1>
   
 
         
-        <a href="/2018/10/24/电商搜索/" class="archive-article-date">
-  	<time datetime="2018-10-24T13:21:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-10-24</time>
+        <a href="/2018/12/01/秒杀系统搭建/" class="archive-article-date">
+  	<time datetime="2018-12-01T12:21:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-12-01</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p><img src="https://upload-images.jianshu.io/upload_images/19142155-aef0009e47e78067.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt><br>搜索是承载电商平台的最关键环节，也是流量产生成交的最重要的方式，所以说一个好的搜索功能是引导用户正确走向的功能，从而解决用户内心购买的需求同时也给我们带来商业利益。</p>
-<p>拿App举例，从如下这几个方面展开讨论。部分内容也是结合部分大佬总结的，分享出来和大家共同探讨，希望对大家有帮助</p>
-<p>类目检索、搜索框、搜索结果、筛选项、个性化推荐<a id="more"></a></p>
-<h3 id="分类检索"><a href="#分类检索" class="headerlink" title="分类检索"></a>分类检索</h3><p><img src="https://upload-images.jianshu.io/upload_images/19142155-00bdecce4aab8533.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></p>
-<p>分为前端类目和后端类目，前端类目一般理解为用户在商城挑选商品的时候看到的类目，一般前台类目是基于后台类目的筛选聚合。后台类目是和商品直接关联的，相对比较稳定，不会轻易调整<br><img src="https://upload-images.jianshu.io/upload_images/19142155-5c1e9af0c2fe4bae.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="类目管理"></p>
-<p>具体的类目如何管理，可查看此篇文章<a href="https://zhuanlan.zhihu.com/p/34715311" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/34715311</a></p>
-<h3 id="搜索框"><a href="#搜索框" class="headerlink" title="搜索框"></a>搜索框</h3><p><img src="https://upload-images.jianshu.io/upload_images/19142155-ae7fbed1dbfcdd18.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
-<h5 id="搜索前"><a href="#搜索前" class="headerlink" title="搜索前"></a>搜索前</h5><p><strong>默认词</strong>：一般一些电商为了提高转化率，输入框会默认展示搜索词，一般通过运营人工配置or后台统计热门的搜素词、热门促销活动</p>
-<p><strong>搜索历史</strong>：根据用户搜索的记录，限定N个</p>
-<p><strong>热搜词推荐</strong>：可根据网上销售情况/搜索量较高的自动推上热搜词/运营推荐类的活动或者商品,所以后台需要可支持独立于搜索词外的手动配置排名搜索词。</p>
-<h5 id="搜索中"><a href="#搜索中" class="headerlink" title="搜索中"></a>搜索中</h5><p><img src="https://upload-images.jianshu.io/upload_images/19142155-91456ae5cb780222.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="搜索中.png"><br><strong>自动容错功能</strong>：用户在搜索时系统识别并纠正，一般先在搜索框推荐正确的字符，搜索结果一般推荐近似的词的搜索结果并告知用户【搜索有误，并推荐正确的结果】</p>
-<p><strong>输入后联想词</strong>：根据搜索的商品自动联想，一般是商品和商品标签属性值的形式展现。</p>
-<p><strong>其他</strong>：比如还支持语音、图片搜索输入等</p>
-<h3 id="搜索结果"><a href="#搜索结果" class="headerlink" title="搜索结果"></a>搜索结果</h3><p>搜索规则和算法一般是电商企业的核心，一般最主要就是索引和排序</p>
-<h4 id="索引"><a href="#索引" class="headerlink" title="索引"></a>索引</h4><p>通俗的理解就是用户输入一个关键词，并将这些关键词通过具体的分词算法，并且告诉搜索系统，需要到哪个类目里去找，具体的分词和索引的算法是技术层面的一些东西大家可以去度娘搜素，如下提供一些网上收集的一些索引算法文章可供参考</p>
-<blockquote>
-<p><a href="https://cloud.tencent.com/developer/article/1343847" target="_blank" rel="noopener">https://cloud.tencent.com/developer/article/1343847</a><br><a href="https://cloud.tencent.com/developer/article/1041781" target="_blank" rel="noopener">https://cloud.tencent.com/developer/article/1041781</a><br><a href="http://www.360doc.com/content/18/1011/14/45689189_793844779.shtml" target="_blank" rel="noopener">http://www.360doc.com/content/18/1011/14/45689189_793844779.shtml</a><br><a href="https://zhuanlan.zhihu.com/p/51015148" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/51015148</a></p>
-</blockquote>
-<p>主流的电商平台一般采用分词的索引方式，分词有一些说白了就是根据不同的业务逻辑和中心，我这边只提供一下自己想法供大家参考<br><img src="https://upload-images.jianshu.io/upload_images/19142155-a236425fd1c5298b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="搜索结果-综合排序.png"></p>
-<p><strong>人气模型</strong>：需要重点关注GMV/UV价值，下面我解释一下具体的定义公式</p>
-<blockquote>
-<p>GMV定义=销售额+取消订单金额+拒收订单金额+退货订单金额</p>
-</blockquote>
-<p>虽然GMV不是实际交易额，但是有一定的参考依据，只要你点击购买行为，无论你有没有实际购买，都应该被记录。所以其实是为了研究用户的购买意向，比如购买之后的退单率、实际成交额的比率。这种量化的指标其类似于用户粘度</p>
-<blockquote>
+        <p>秒杀是电商平台最常用的促销活动，例如京东淘宝等主流电商平台把秒杀、抢购作为一个功能入口存在，定期秒杀。其产品定位在于通过低价促销吸引对价格敏感的用户，起到引流促活，且带动销售。<br>如下是京东、淘宝的秒杀页面。</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/19142155-d91bf715d9894e89.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></p>
+<p>那么一个秒杀系统如何搭建？前后端功能如何配合，都说“前端一小步，后端一大步”，对于C端来说，价格、商品吸引人，我能到特定时间去抢购、付款就可以了，那么后端如何做相应的功能支撑呢，下面我具体的阐述一下。</p>
+<h4 id="一、秒杀架构"><a href="#一、秒杀架构" class="headerlink" title="一、秒杀架构"></a>一、秒杀架构</h4><p><img src="https://upload-images.jianshu.io/upload_images/19142155-134bbf67109fcbb9.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="秒杀架构"></p>
+<p>从此架构看出，一个秒杀完整的系统搭建，后端需要有商家报名参与入口、秒杀活动的设置、后台秒杀活动、订单管理<a id="more"></a></p>
+<h4 id="二、-商家报名流程"><a href="#二、-商家报名流程" class="headerlink" title="二、 商家报名流程"></a>二、 商家报名流程</h4><p>平台可以给商家提供这样的功能入口，一旦商家有意愿做秒杀活动，可以发起由平台审核，审核通过即可上架<br><img src="https://upload-images.jianshu.io/upload_images/19142155-45428df059beca44.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="商家报名流程.png"></p>
 <ul>
-<li>UV价值=销售额/访客数，是指每个用户带来多少销售额，其中销售额=访客数* 转化率* 客单价，所以UV=转化率* 客单价，其中这里可以看出UV价值其实和商品转化率、客单价这两者有很大关系</li>
-<li>UV是指独立访客，PV是指刷新次数，这个概念在于如果PV/UV比例过低，说明用户浏览深度太浅，对于用户吸引力不够高</li>
+<li>商家是否满足要求：是否对参与商家设置门槛，比如经营较好，店铺综合评分较高的店铺方可参与</li>
+<li>提报商品是否满足：比如此商品设置价格合理，是否是违规商品等</li>
 </ul>
-</blockquote>
-<p><strong>服务模型</strong>：这其中涉及的对象有用户、客服、商家、快递公司，是用户下单到签收过程中遇到问题的响应和服务。主要考察就是用户是否有退单、投诉、是否有差评；商家是否及时发货，是否及时响应用户的问题；快递公司是否及时派送，整体的物流时长等维度考虑。</p>
-<p><strong>店铺模型</strong> ：店铺的等级、DSR（店铺评分系统）、转化、动销等，以及店铺的基本资质审核。</p>
-<p>这其中有一点：给予新店/新品一定的扶持，<strong>避免马太效应</strong>。何谓马太效应通俗的理解就是强者更强，弱者更弱。头部商家容易形成垄断，新商家增长受限容易退店，一定程度会降低商品丰富度和头部商家恶意抬高价格。所以新商家要有一定的扶助政策并提供指导。</p>
-<p><strong>用户模型</strong>：根据不同的用户行为和标签达到千人千面的搜索结果，这也是个性化推荐算法的一环。</p>
-<h3 id="筛选项"><a href="#筛选项" class="headerlink" title="筛选项"></a>筛选项</h3><p>当搜索结果过多或者相关性匹配不高，搜索结果仍然海量的情况，用户如何精准的获取商品，还需要依靠筛选项进行排序和过滤，排除过多干扰，可以降低用户下滑寻找商品列表。</p>
-<p>目前筛选器是大多数电商的标配，根据销量、价格排序，还有根据品牌、服务折扣和不同的商品参数进行排序</p>
-<h3 id="个性化推荐"><a href="#个性化推荐" class="headerlink" title="个性化推荐"></a>个性化推荐</h3><p>个性化推荐其实是一种过滤系统，用户预测用户的【爱好】，根据用户基本信息（年龄、性别、职业）、用户行为（收藏、浏览记录、购买）等针对性的推荐帮助用户决定购买方向。</p>
-<h5 id="推荐系统可以从哪个方面进行呢"><a href="#推荐系统可以从哪个方面进行呢" class="headerlink" title="推荐系统可以从哪个方面进行呢"></a>推荐系统可以从哪个方面进行呢</h5><p><strong>1、上知天文下知地理</strong></p>
-<p>根据当季商品、地域特点、气候等</p>
-<p><strong>2、用户行为（画像）</strong></p>
-<p>男女、孕期/经期、喜好、纸尿裤/奶粉、电器爱好者、美食，都可以标记为标签，用户标签越多，推荐的内容越能匹配用户的爱好</p>
-<p><strong>3、协同过滤</strong></p>
-<blockquote>
-<p>何谓协同过滤？举个例子比如我今天想外出吃饭，你可能会问好友附近有什么推荐的美食，大部分人都会问和你关系密切，和你品味差不多的人，这就是协同过滤的核心</p>
-</blockquote>
-<p>下图是我整理的脑图<br><img src="https://upload-images.jianshu.io/upload_images/19142155-7c8a12a428b82213.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="协同过滤.png"></p>
-<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><ul>
-<li>对于电商的搜索逻辑有个归纳总结，便于以后自己复盘</li>
-<li>分享出来也供大家参考，不喜勿喷，毕竟也是自己辛苦整理出来的</li>
-<li>下期想针对一些运营活动，比如红包分享、拼团、秒杀分享自己的思路吧</li>
-<li>以上over~</li>
+<p>这里我只简单论述，具体需根据每个企业特性进行考量</p>
+<h4 id="三、秒杀活动设置"><a href="#三、秒杀活动设置" class="headerlink" title="三、秒杀活动设置"></a>三、秒杀活动设置</h4><p><img src="https://upload-images.jianshu.io/upload_images/19142155-98752cb0663c7000.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="秒杀活动设置.png"></p>
+<ol>
+<li>活动信息：包括秒杀时间、渠道、秒杀模板（不会做图的商家可提供模板套用）</li>
+<li>活动限制条件：每个用户的限制购买次数、购买数量等</li>
+<li>活动商品：设置活动商品价格、库存、时间段等</li>
+</ol>
+<h4 id="四、秒杀抢购"><a href="#四、秒杀抢购" class="headerlink" title="四、秒杀抢购"></a>四、秒杀抢购</h4><p>对于C端用户参与秒杀，要考虑用户的需求点</p>
+<ul>
+<li>首先肯定是价格商品吸引用户</li>
+<li>其次活动预热是否充分，可设置提醒、同时活动开始时候库存是否充足，是否超过限购数量，售完是否可以原价购买等</li>
 </ul>
+<p>下面是我自己整理的秒杀流程，仅供借鉴</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/19142155-7c7dc249caba8c29.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="秒杀抢购流程.png"></p>
+<h4 id="五、技术层面实现"><a href="#五、技术层面实现" class="headerlink" title="五、技术层面实现"></a>五、技术层面实现</h4><p>这部分也是参考一些大神的博客得出的一些技术层面的心得，可能不是很恰当，希望大家指正</p>
+<h5 id="1-前端高并发"><a href="#1-前端高并发" class="headerlink" title="1. 前端高并发"></a>1. 前端高并发</h5><p>前端常用的方法是【扩容】【静态化】【限流】</p>
+<p><strong>扩容</strong>：加机器，这是最简单的方法，通过增加前端池的整体承载量来抗峰值。<br>举个通俗的例子：比如我想运送100棵树木，我准备两辆卡车，一辆运50，计算公式就是2辆X50棵/辆X1小时=100棵/小时，那如果我需要搬运更多的树木，我可以通过增加车辆、也可以增加每辆车的运输量、或者缩短运输时间。这就是扩容的概念</p>
+<p><strong>静态化</strong>：将活动页面上的所有可以静态的元素全部静态化，并尽量减少动态元素。通过CDN来抗峰值。</p>
+<p><strong>限流</strong>：一般都会采用IP级别的限流，即针对某一个IP，限制单位时间内发起请求数量。或者活动入口的时候增加游戏或者问题环节进行消峰操作。<br>有损服务：最后一招，在接近前端池承载能力的水位上限的时候，随机拒绝部分请求来保护活动整体的可用性。</p>
+<h5 id="2-后端如何解决"><a href="#2-后端如何解决" class="headerlink" title="2. 后端如何解决"></a>2. 后端如何解决</h5><p>方案：本地标记 + redis预处理 + RabbitMQ异步下单 + 客户端轮询</p>
+<p><strong>实现：</strong></p>
+<ol>
+<li>在秒杀阶段使用本地标记对用户秒杀过的商品做标记，若被标记过直接返回重复秒杀，未被标记才查询redis，通过本地标记来减少对redis的访问</li>
+<li>抢购开始前，将商品和库存数据同步到redis中，所有的抢购操作都在redis中进行处理，通过Redis预减少库存减少数据库访问<br>3、为了保护系统不受高流量的冲击而导致系统崩溃的问题，使用RabbitMQ用异步队列处理下单，实际做了一层缓冲保护，做了一个窗口模型，窗口模型会实时的刷新用户秒杀的状态。<br>4、client端用js轮询一个接口，用来获取处理状态</li>
+</ol>
+<p>关于技术层面引用的的文章链接：<br><a href="https://blog.csdn.net/moakun/article/details/80547135" target="_blank" rel="noopener">https://blog.csdn.net/moakun/article/details/80547135</a><br><a href="https://blog.csdn.net/weixin_30894583/article/details/97935776" target="_blank" rel="noopener">https://blog.csdn.net/weixin_30894583/article/details/97935776</a></p>
+<h4 id="六、总结"><a href="#六、总结" class="headerlink" title="六、总结"></a>六、总结</h4><p>以上是自己对于设计秒杀系统的思路，不喜勿喷，如果大家有更多的思路希望和我多多交流，不断补充</p>
 
       
 
@@ -283,7 +266,11 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="/categories/电商搜索//" class="article-tag-list-link color5">电商搜索</a>
+        			<a href="/categories/营销//" class="article-tag-list-link color3">营销</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/营销/运营//" class="article-tag-list-link color3">运营</a>
         		</li>
       		
 		</ul>
@@ -338,7 +325,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://chenchen315.github.io/2018/10/24/电商搜索/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://chenchen315.github.io/2018/12/01/秒杀系统搭建/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -352,15 +339,20 @@
   
 <nav id="article-nav">
   
-    <a href="/2018/12/01/秒杀系统搭建/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2019/03/15/qiandao/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          秒杀系统搭建
+          签到，你真的会做吗？
         
       </div>
     </a>
   
+  
+    <a href="/2018/10/24/电商搜索/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">电商搜索逻辑与规则</div>
+      <i class="icon-circle-right"></i>
+    </a>
   
 </nav>
 
@@ -385,7 +377,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#分类检索"><span class="toc-number">1.</span> <span class="toc-text">分类检索</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#搜索框"><span class="toc-number">2.</span> <span class="toc-text">搜索框</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#搜索前"><span class="toc-number">2.0.1.</span> <span class="toc-text">搜索前</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#搜索中"><span class="toc-number">2.0.2.</span> <span class="toc-text">搜索中</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#搜索结果"><span class="toc-number">3.</span> <span class="toc-text">搜索结果</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#索引"><span class="toc-number">3.1.</span> <span class="toc-text">索引</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#筛选项"><span class="toc-number">4.</span> <span class="toc-text">筛选项</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#个性化推荐"><span class="toc-number">5.</span> <span class="toc-text">个性化推荐</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#推荐系统可以从哪个方面进行呢"><span class="toc-number">5.0.1.</span> <span class="toc-text">推荐系统可以从哪个方面进行呢</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#总结"><span class="toc-number">6.</span> <span class="toc-text">总结</span></a></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#一、秒杀架构"><span class="toc-number">1.</span> <span class="toc-text">一、秒杀架构</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#二、-商家报名流程"><span class="toc-number">2.</span> <span class="toc-text">二、 商家报名流程</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#三、秒杀活动设置"><span class="toc-number">3.</span> <span class="toc-text">三、秒杀活动设置</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#四、秒杀抢购"><span class="toc-number">4.</span> <span class="toc-text">四、秒杀抢购</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#五、技术层面实现"><span class="toc-number">5.</span> <span class="toc-text">五、技术层面实现</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#1-前端高并发"><span class="toc-number">5.1.</span> <span class="toc-text">1. 前端高并发</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2-后端如何解决"><span class="toc-number">5.2.</span> <span class="toc-text">2. 后端如何解决</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#六、总结"><span class="toc-number">6.</span> <span class="toc-text">六、总结</span></a></li></ol>
                     </div>
                 </span>
             </div>
